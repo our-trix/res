@@ -1,0 +1,55 @@
+/* تفعيل RTL للنصوص */
+.app-container {
+  direction: rtl;
+  text-align: right;
+  font-family: Arial, sans-serif;
+  background-color: #f0f1f5;
+  color: #1e293b;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* العناوين */
+h1, h2, h3 {
+  text-align: right;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+/* الأزرار */
+button {
+  background-color: #1e293b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #374151;
+}
+
+/* الجداول */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: right;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #1e293b;
+}
+
+a:hover {
+  text-decoration: underline;
+}
