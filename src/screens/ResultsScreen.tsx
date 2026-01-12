@@ -8,7 +8,7 @@ export default function ResultsScreenWeb() {
   useEffect(() => {
     const fetchDates = async () => {
       try {
-        const res = await fetch("http://192.168.2.107:3000/api/results/all-dates");
+        const res = await fetch("http://https://trix-server-r52j.onrender.com/api/results/all-dates");
         const data: string[] = await res.json();
 
         // إزالة التواريخ المكررة

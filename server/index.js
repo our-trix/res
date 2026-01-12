@@ -867,5 +867,5 @@ app.get("/api/team/:id", async (req, res) => {
    START SERVER
 ========================= */
 app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+  console.log("Server running on http://trix-server-r52j.onrender.com/");
 });

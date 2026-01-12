@@ -21,7 +21,7 @@ export default function AddPlayerWeb() {
 
   const fetchPlayers = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/players");
+      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/players");
       const data = await res.json();
       setPlayers(data);
     } catch {
@@ -44,7 +44,7 @@ export default function AddPlayerWeb() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/players", {
+      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/players", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name }),

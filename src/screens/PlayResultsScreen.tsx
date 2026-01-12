@@ -44,7 +44,7 @@ export default function PlayResultsScreenWeb() {
 
       try {
         const res = await fetch(
-          `http://192.168.2.107:3000/api/results?year=${year}&month=${month}&day=${day}`
+          `http://https://trix-server-r52j.onrender.com/api/results?year=${year}&month=${month}&day=${day}`
         );
 
         if (!res.ok) throw new Error("فشل جلب النتائج من السيرفر");

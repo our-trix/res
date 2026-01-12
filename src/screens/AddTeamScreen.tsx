@@ -31,7 +31,7 @@ export default function AddTeamPageWeb() {
 
   const fetchPlayers = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/players-with-teams");
+      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/players-with-teams");
       const data = await res.json();
       setPlayers(data);
     } catch {
@@ -41,7 +41,7 @@ export default function AddTeamPageWeb() {
 
   const fetchTeams = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/teams");
+      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/teams");
       const data = await res.json();
       setTeams(data);
     } catch {
@@ -84,7 +84,7 @@ export default function AddTeamPageWeb() {
     // CREATE TEAM
     // =========================
     try {
-      const res = await fetch("http://localhost:3000/api/teams", {
+      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/teams", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

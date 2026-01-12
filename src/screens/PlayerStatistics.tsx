@@ -25,7 +25,7 @@ const PlayerStatisticsScreen: React.FC = () => {
      Load Players
   ========================= */
   useEffect(() => {
-    fetch("http://localhost:3000/api/players")
+    fetch("http://https://trix-server-r52j.onrender.com/api/players")
       .then((res) => res.json())
       .then((data) => setPlayers(data))
       .catch(() => {});
@@ -41,7 +41,7 @@ const PlayerStatisticsScreen: React.FC = () => {
     }
 
     setLoading(true);
-    fetch(`http://localhost:3000/api/stats/player/${selectedPlayerId}`)
+    fetch(`http://https://trix-server-r52j.onrender.com/api/stats/player/${selectedPlayerId}`)
       .then((res) => res.json())
       .then((data) => setStats(data))
       .catch(() => setStats(null))

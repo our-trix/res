@@ -29,7 +29,7 @@ const GeneralStatisticsScreen: React.FC = () => {
     setLoading(true);
     setStatistics([]);
 
-    fetch(`http://localhost:3000/api/stats/general?type=${mode}`)
+    fetch(`http://https://trix-server-r52j.onrender.com/api/stats/general?type=${mode}`)
       .then((res) => res.json())
       .then((data) => setStatistics(data))
       .catch((err) => console.log("Failed to load general statistics", err))
