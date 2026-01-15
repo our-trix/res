@@ -14,7 +14,7 @@ import TeamStatistics from "./screens/TeamStatistics";
 import PlayerStatistics from "./screens/PlayerStatistics";
 import GeneralStatistics from "./screens/GeneralStatistics";
 
-export const DatabaseUrl = "https://oldfqbrqxfrqguqdleuj.supabase.co/api";
+export const DatabaseUrl = "https://trix-server-r52j.onrender.com/api";
 
 function App() {
   return (
