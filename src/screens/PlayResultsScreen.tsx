@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { DatabaseUrl } from "../App";
 
 interface Player {
   name: string;
@@ -44,7 +45,7 @@ export default function PlayResultsScreenWeb() {
 
       try {
         const res = await fetch(
-          `http://https://trix-server-r52j.onrender.com/api/results?year=${year}&month=${month}&day=${day}`
+          `${DatabaseUrl}/results?year=${year}&month=${month}&day=${day}`
         );
 
         if (!res.ok) throw new Error("فشل جلب النتائج من السيرفر");
@@ -125,7 +126,7 @@ export default function PlayResultsScreenWeb() {
    CSS INLINE
 ========================= */
 const styles: { [key: string]: React.CSSProperties } = {
-  container: { padding: 20, maxWidth: 800, margin: "0 auto", direction: "rtl", textAlign: "right" },
+  container: { padding: 20, maxWidth: 800, margin: "0 auto", direction: "rtl", textAlign: "right"},
   title: { fontSize: 24, fontWeight: "bold", marginBottom: 5, color: "black", textAlign: "center" },
   subtitle: { fontSize: 18, marginBottom: 20, color: "black", textAlign: "center" },
   info: { fontSize: 16, marginBottom: 10, color: "gray" },
@@ -135,7 +136,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     backgroundColor: "#334155",
     borderRadius: 10,
     marginBottom: 15,
-    color: "white",
+    color: "white",    
   },
   row: { display: "flex", justifyContent: "space-between", marginBottom: 10 },
   team: { fontWeight: "bold", width: "45%", textAlign: "center" },

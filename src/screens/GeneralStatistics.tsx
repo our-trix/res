@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import "./GeneralStatisticsScreen.css";
+import { DatabaseUrl } from "../App";
 type StatisticsMode = "teams" | "players";
 
 type GeneralStatisticItem = {
@@ -29,7 +30,7 @@ const GeneralStatisticsScreen: React.FC = () => {
     setLoading(true);
     setStatistics([]);
 
-    fetch(`http://https://trix-server-r52j.onrender.com/api/stats/general?type=${mode}`)
+    fetch(`${DatabaseUrl}/stats/general?type=${mode}`)
       .then((res) => res.json())
       .then((data) => setStatistics(data))
       .catch((err) => console.log("Failed to load general statistics", err))

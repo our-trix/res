@@ -8,15 +8,15 @@
 
 .title {
   text-align: center;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 .playerPicker {
-  width: 100%;
+  width: 70%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -40,10 +40,11 @@
 }
 
 .statLabel {
-  font-size: 16px;
+  font-size: 20px;
+  margin-left: 150px;
 }
 
 .statValue {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 }

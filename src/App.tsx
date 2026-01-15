@@ -14,6 +14,8 @@ import TeamStatistics from "./screens/TeamStatistics";
 import PlayerStatistics from "./screens/PlayerStatistics";
 import GeneralStatistics from "./screens/GeneralStatistics";
 
+export const DatabaseUrl = "https://oldfqbrqxfrqguqdleuj.supabase.co/api";
+
 function App() {
   return (
     <div className="app-container">

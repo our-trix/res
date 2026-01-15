@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DatabaseUrl } from "../App";
 
 interface Player {
   id: number;
@@ -21,7 +22,7 @@ export default function AddPlayerWeb() {
 
   const fetchPlayers = async () => {
     try {
-      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/players");
+      const res = await fetch(`${DatabaseUrl}/players`);
       const data = await res.json();
       setPlayers(data);
     } catch {
@@ -44,7 +45,7 @@ export default function AddPlayerWeb() {
     }
 
     try {
-      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/players", {
+      const res = await fetch(`${DatabaseUrl}/players`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name }),
@@ -101,7 +102,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: "16px",
   },
   input: {
-    width: "100%",
+    width: "97%",
     padding: "10px",
     marginBottom: "20px",
     borderRadius: "5px",

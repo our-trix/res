@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "./TeamStatisticsScreen.css";
+import { DatabaseUrl } from "../App";
 
 type Team = {
   id: number;
@@ -25,7 +27,7 @@ const TeamStatisticsScreen: React.FC = () => {
      Load Teams
   ========================= */
   useEffect(() => {
-    fetch("http://https://trix-server-r52j.onrender.com/api/teams")
+    fetch(`${DatabaseUrl}/teams`)
       .then(res => res.json())
       .then(data => setTeams(data))
       .catch(() => {});
@@ -41,7 +43,7 @@ const TeamStatisticsScreen: React.FC = () => {
     }
 
     setLoading(true);
-    fetch(`http://https://trix-server-r52j.onrender.com/api/stats/team/${selectedTeamId}`)
+    fetch(`${DatabaseUrl}/stats/team/${selectedTeamId}`)
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(() => setStats(null))

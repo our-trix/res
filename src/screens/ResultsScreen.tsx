@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { DatabaseUrl } from "../App";
 
 export default function ResultsScreenWeb() {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ export default function ResultsScreenWeb() {
   useEffect(() => {
     const fetchDates = async () => {
       try {
-        const res = await fetch("http://https://trix-server-r52j.onrender.com/api/results/all-dates");
+        const res = await fetch(`${DatabaseUrl}/results/all-dates`);
         const data: string[] = await res.json();
 
         // إزالة التواريخ المكررة

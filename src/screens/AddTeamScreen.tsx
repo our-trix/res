@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DatabaseUrl } from "../App";
 
 interface Team {
   id: number;
@@ -31,7 +32,7 @@ export default function AddTeamPageWeb() {
 
   const fetchPlayers = async () => {
     try {
-      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/players-with-teams");
+      const res = await fetch(`${DatabaseUrl}/players-with-teams`);
       const data = await res.json();
       setPlayers(data);
     } catch {
@@ -41,7 +42,7 @@ export default function AddTeamPageWeb() {
 
   const fetchTeams = async () => {
     try {
-      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/teams");
+      const res = await fetch(`${DatabaseUrl}/teams`);
       const data = await res.json();
       setTeams(data);
     } catch {
@@ -84,7 +85,7 @@ export default function AddTeamPageWeb() {
     // CREATE TEAM
     // =========================
     try {
-      const res = await fetch("http://https://trix-server-r52j.onrender.com/api/teams", {
+      const res = await fetch(`${DatabaseUrl}/teams`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -109,7 +110,7 @@ export default function AddTeamPageWeb() {
     <div style={styles.container}>
       <h2>إضافة فريق جديد</h2>
 
-      <label>اسم الفريق</label>
+      <label style={styles.label}>اسم الفريق</label>
       <input
         type="text"
         value={teamName}
@@ -118,7 +119,7 @@ export default function AddTeamPageWeb() {
         style={styles.input}
       />
 
-      <label>اللاعب الأول</label>
+      <label style={styles.label}>اللاعب الأول</label>
       <select
         value={player1 ?? ""}
         onChange={(e) => setPlayer1(Number(e.target.value))}
@@ -134,7 +135,7 @@ export default function AddTeamPageWeb() {
           ))}
       </select>
 
-      <label>اللاعب الثاني</label>
+      <label style={styles.label}>اللاعب الثاني</label>
       <select
         value={player2 ?? ""}
         onChange={(e) => setPlayer2(Number(e.target.value))}
@@ -173,7 +174,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     textAlign: "right",
   },
   input: {
-    width: "100%",
+    width: "97%",
     padding: 10,
     marginTop: 5,
     marginBottom: 15,
@@ -198,5 +199,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     border: "none",
     borderRadius: 5,
     cursor: "pointer",
+  },
+  label: {
+    display: "block",
+    marginTop: 10,
+    marginBottom: 6,
   },
 };
