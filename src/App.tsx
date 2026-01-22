@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
 import HomeScreen from "./screens/HomeScreen";
@@ -19,39 +19,43 @@ export const DatabaseUrl = "https://trix-server-r52j.onrender.com/api";
 function App() {
   return (
     <div className="app-container">
-      <Router>
-        <Routes>
-          {/* الصفحة الرئيسية */}
-          <Route path="/" element={<HomeScreen />} />
+      <Routes>
+        {/* الصفحة الرئيسية */}
+        <Route path="/" element={<HomeScreen />} />
 
-          {/* صفحة النتائج مع params */}
-          <Route path="/results/:year/:month/:day" element={<ResultsScreen />} />
+        {/* صفحة النتائج مع params */}
+        <Route
+          path="/results/:year/:month/:day"
+          element={<ResultsScreen />}
+        />
 
-          {/* إضافة لاعب جديد */}
-          <Route path="/new-player" element={<NewPlayer />} />
+        {/* إضافة لاعب جديد */}
+        <Route path="/new-player" element={<NewPlayer />} />
 
-          {/* إضافة فريق جديد */}
-          <Route path="/new-team" element={<NewTeam />} />
+        {/* إضافة فريق جديد */}
+        <Route path="/new-team" element={<NewTeam />} />
 
-          {/* الإحصائيات العامة */}
-          <Route path="/statistics" element={<Statistics />} />
+        {/* الإحصائيات */}
+        <Route path="/statistics" element={<Statistics />} />
 
-          {/* إحصائيات الفريق */}
-          <Route path="/team-statistics" element={<TeamStatistics />} />
+        {/* إحصائيات الفريق */}
+        <Route path="/team-statistics" element={<TeamStatistics />} />
 
-          {/* إحصائيات اللاعب */}
-          <Route path="/player-statistics" element={<PlayerStatistics />} />
+        {/* إحصائيات اللاعب */}
+        <Route path="/player-statistics" element={<PlayerStatistics />} />
 
-          {/* الإحصائيات العامة */}
-          <Route path="/general-statistics" element={<GeneralStatistics />} />
+        {/* الإحصائيات العامة */}
+        <Route path="/general-statistics" element={<GeneralStatistics />} />
 
-          {/* نتائج اللعب */}
-          <Route path="/play-results/:year/:month/:day" element={<PlayResults />} />
+        {/* نتائج اللعب */}
+        <Route
+          path="/play-results/:year/:month/:day"
+          element={<PlayResults />}
+        />
 
-          {/* أي رابط غير موجود يعيد للصفحة الرئيسية */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </Router>
+        {/* أي مسار غير معروف يعيد للصفحة الرئيسية */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
   );
 }

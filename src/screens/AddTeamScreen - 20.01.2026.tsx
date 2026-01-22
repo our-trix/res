@@ -14,19 +14,13 @@ interface Player {
 }
 
 export default function AddTeamPageWeb() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // ✅ hook للتنقل
 
   const [teamName, setTeamName] = useState("");
   const [players, setPlayers] = useState<Player[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
   const [player1, setPlayer1] = useState<number | null>(null);
   const [player2, setPlayer2] = useState<number | null>(null);
-
-  /* =========================
-     EDIT TEAM STATES
-  ========================= */
-  const [selectedTeamId, setSelectedTeamId] = useState<number | null>(null);
-  const [newTeamName, setNewTeamName] = useState("");
 
   // =========================
   // FETCH DATA
@@ -63,9 +57,6 @@ export default function AddTeamPageWeb() {
     return p1.teams.some((t1) => p2.teams.some((t2) => t1.id === t2.id));
   };
 
-  // =========================
-  // ADD TEAM
-  // =========================
   const handleSubmit = async () => {
     if (!teamName.trim()) {
       return alert("تنبيه: يرجى إدخال اسم الفريق");
@@ -90,6 +81,9 @@ export default function AddTeamPageWeb() {
       return alert("تنبيه: هذان اللاعبان موجودان مسبقًا في فريق");
     }
 
+    // =========================
+    // CREATE TEAM
+    // =========================
     try {
       const res = await fetch(`${DatabaseUrl}/teams`, {
         method: "POST",
@@ -103,41 +97,9 @@ export default function AddTeamPageWeb() {
       if (!res.ok) throw new Error();
 
       alert("نجاح: تم إنشاء الفريق بنجاح");
-      navigate("/");
+      navigate("/"); // ✅ العودة للصفحة الرئيسية
     } catch {
       alert("خطأ: فشل في إنشاء الفريق");
-    }
-  };
-
-  // =========================
-  // EDIT TEAM
-  // =========================
-  const handleEditTeam = async () => {
-    if (!selectedTeamId) return;
-
-    const name = newTeamName.trim();
-
-    if (!name) return alert("يرجى إدخال الاسم الجديد");
-
-    if (teams.some((t) => t.name === name)) {
-      return alert("اسم الفريق موجود مسبقًا");
-    }
-
-    try {
-      const res = await fetch(`${DatabaseUrl}/teams/${selectedTeamId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name }),
-      });
-
-      if (!res.ok) throw new Error();
-
-      alert("تم تعديل اسم الفريق بنجاح");
-      setSelectedTeamId(null);
-      setNewTeamName("");
-      fetchTeams();
-    } catch {
-      alert("فشل في تعديل الفريق");
     }
   };
 
@@ -192,62 +154,12 @@ export default function AddTeamPageWeb() {
       <button onClick={handleSubmit} style={styles.button}>
         إضافة الفريق
       </button>
-
-      {/* =========================
-          EDIT TEAM SECTION
-      ========================= */}
-      <hr style={{ margin: "30px 0" }} />
-
-      <h2>تعديل فريق</h2>
-
-      <label style={styles.label}>ادخل اسم الفريق المراد تعديله</label>
-      <select
-        value={selectedTeamId ?? ""}
-        onChange={(e) => {
-          setSelectedTeamId(Number(e.target.value));
-          setNewTeamName("");
-        }}
-        style={styles.select}
-      >
-        <option value="">اختر فريقًا</option>
-        {teams.map((t) => (
-          <option key={t.id} value={t.id}>
-            {t.name}
-          </option>
-        ))}
-      </select>
-
-      <label style={styles.label}>اسم الفريق الجديد</label>
-      <input
-        type="text"
-        value={newTeamName}
-        onChange={(e) => setNewTeamName(e.target.value)}
-        placeholder="أدخل الاسم الجديد"
-        disabled={!selectedTeamId}
-        style={{
-          ...styles.input,
-          backgroundColor: selectedTeamId ? "#fff" : "#f0f0f0",
-        }}
-      />
-
-      <button
-        onClick={handleEditTeam}
-        disabled={!selectedTeamId || !newTeamName.trim()}
-        style={{
-          ...styles.button,
-          backgroundColor: selectedTeamId && newTeamName.trim() ? "#2196F3" : "#999",
-          opacity:
-            selectedTeamId && newTeamName.trim() ? 1 : 0.5,
-        }}
-      >
-        حفظ التعديل
-      </button>
     </div>
   );
 }
 
 /* =========================
-   Styles (UNCHANGED)
+   Styles
 ========================= */
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
@@ -258,7 +170,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: "8px",
     boxShadow: "0 0 10px rgba(0,0,0,0.1)",
     fontFamily: "Arial, sans-serif",
-    direction: "rtl",
+    direction: "rtl", // ✅ دعم RTL
     textAlign: "right",
   },
   input: {
@@ -282,7 +194,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   button: {
     width: "100%",
     padding: 12,
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#1e293b",
     color: "white",
     border: "none",
     borderRadius: 5,

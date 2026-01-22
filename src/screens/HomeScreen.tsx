@@ -13,23 +13,23 @@ const HomeScreenWeb: React.FC = () => {
     <div style={styles.container}>
       <h1 style={styles.title}>🎮 إدارة المسابقات</h1>
 
-      {/* إنشاء فريق جديد */}
+      {/* إنشاء/ تعديل فريق  */}
       <div style={styles.buttonWrapper}>
         <button
           style={{ ...styles.button, backgroundColor: "#3b82f6" }}
           onClick={() => navigate("/new-team")}
         >
-          🏆 إنشاء فريق جديد
+          🏆 إنشاء/ تعديل فريق 
         </button>
       </div>
 
-      {/* إضافة لاعب جديد */}
+      {/* إضافة/ تعديل لاعب  */}
       <div style={styles.buttonWrapper}>
         <button
           style={{ ...styles.button, backgroundColor: "#f59e0b" }}
           onClick={() => navigate("/new-player")}
         >
-          🧑‍🤝‍🧑 إضافة لاعب جديد
+          🧑‍🤝‍🧑   إضافة/ تعديل لاعب 
         </button>
       </div>
 
