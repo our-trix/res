@@ -106,7 +106,7 @@ export default function PlayResultsScreenWeb() {
             match.rounds.map((r) => (
               <div key={r.id} style={styles.round}>
                 <p style={styles.roundText}>
-                  الجولة {r.round_number} – {r.game_type} : {r.round_score}
+                 الجولة {r.round_number}:         {r.game_type}  {r.round_score}     
                 </p>
               </div>
             ))}
@@ -143,7 +143,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   vs: { color: "gray", fontWeight: "bold", textAlign: "center" },
   text: { marginBottom: 3 },
   round: { padding: 6, marginTop: 3, marginBottom: 3, backgroundColor: "#1e293b", borderRadius: 6 },
-  roundText: { fontSize: 14 },
+  roundText: { fontSize: 14, whiteSpace: "pre" },
   notes: { marginTop: 5 },
   backButton: {
     marginTop: 10,
